@@ -1,0 +1,71 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}My Profile - Online Shop{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="row">
+    <!-- Sidebar Navigation -->
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">My Account</h5>
+            </div>
+            <div class="list-group list-group-flush">
+                <a href="#profile" class="list-group-item list-group-item-action active" data-bs-toggle="list">
+                    <i class="fas fa-user me-2"></i>Profile Information
+                </a>
+                 <div class="row mb-3">
+                            <div class="col-md-12">
+                                <label class="form-label" style="margin: 10px;"><strong>Username: {{ user.username }}</strong></label>
+                            </div>
+                        </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="col-md-9">
+        <!-- Profile Information Section -->
+        <div id="profile" class="card mb-4">
+            <div class="card-header">
+                <h5 class="mb-0">Profile Information</h5>
+
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    
+                    <div class="col-md-8">
+                         <div class="profileupdate">
+                                <form method="post">
+                                    {% csrf_token %}
+                                    {{ profile_form|crispy }}
+                                    <!-- add a name attribute so the view can identify this POST as the profile update form -->
+                                    <button type="submit" name="profileupdate" class="btn btn-primary mt-3">Update Profile</button>
+                                </form>
+                            </div>
+
+                            <br></br>
+                       
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h5>Change password</h5>
+                                <form method="post">
+                                    {% csrf_token %}
+                                    {{ password_form|crispy }}
+                                    <!-- similarly identify the password change submission -->
+                                    <button type="submit" name="passwordchange" class="btn btn-primary">Change Password</button>
+                                </form>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+          
+
+
+{% endblock %}

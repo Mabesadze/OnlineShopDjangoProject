@@ -1,0 +1,18 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}Login - Online Shop{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+<div class="login-form-div d-flex align-items-center justify-content-center mt-3">
+     <form action="{% url 'users:login' %}" method="post" class="w-25">
+        {% csrf_token %}
+        {{ form|crispy }}
+        
+        <button type="submit" class="btn btn-primary w-100">Login</button>
+</div>
+    
+{% endblock %}

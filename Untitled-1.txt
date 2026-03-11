@@ -1,0 +1,2 @@
+cd c:\Users\Saba\Desktop\python\ project\OnlineShopDjango
+.venv\Scripts\python.exe manage.py runserver

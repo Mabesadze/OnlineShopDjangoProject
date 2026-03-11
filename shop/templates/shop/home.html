@@ -1,0 +1,42 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}Home - Online Shop{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="jumbotron bg-secondary text-white rounded p-5 mb-4">
+            <h1 class="display-4">Welcome to Our Online Shop!</h1>
+            <p class="lead">Discover amazing products at great prices.</p>
+            <a class="btn btn-light btn-lg" href="{% url 'shop:products' %}">Shop Now</a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Quality Products</h5>
+                <p class="card-text">We offer only the highest quality products from trusted manufacturers.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Fast Shipping</h5>
+                <p class="card-text">Get your orders delivered quickly with our express shipping options.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">24/7 Support</h5>
+                <p class="card-text">Our customer support team is always ready to help you.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

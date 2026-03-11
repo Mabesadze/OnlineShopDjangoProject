@@ -1,0 +1,53 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}About Us - Online Shop{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8 mx-auto">
+        <h1 class="mb-4">About Our Online Shop</h1>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Our Story</h5>
+                <p class="card-text">
+                    Founded in 2024, our online shop has been dedicated to providing customers with
+                    high-quality products and exceptional service. We believe in building long-term
+                    relationships with our customers through trust, transparency, and outstanding support.
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Our Mission</h5>
+                        <p class="card-text">
+                            To make quality products accessible to everyone while maintaining the highest
+                            standards of customer service and satisfaction.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Our Values</h5>
+                        <ul class="list-unstyled">
+                            <li>✓ Quality First</li>
+                            <li>✓ Customer Satisfaction</li>
+                            <li>✓ Transparency</li>
+                            <li>✓ Innovation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <a href="{% url 'shop:home' %}" class="btn btn-primary">Back to Home</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

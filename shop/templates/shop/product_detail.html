@@ -1,0 +1,29 @@
+{% extends 'shop/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ product.name }} - Online Shop{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-12">
+        <h1>{{ product.name }}</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        {% if product.image %}
+            <img src="{{ product.image.url }}" class="img-fluid" alt="{{ product.name }}">
+        {% else %}
+            <p><em>No image available</em></p>
+        {% endif %}
+    </div>
+    <div class="col-md-6">
+        <p><strong>Price:</strong> {{ product.price }} ლ</p>
+        <p><strong>Categories:</strong> {{ product.category.all|join:", " }}</p>
+        <p>{{ product.description }}</p>
+        <a href="{% url 'orders:add_to_cart' product.id %}" class="btn btn-primary">Add to Cart</a>
+    </div>
+</div>
+
+{% endblock %}

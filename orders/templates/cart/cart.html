@@ -1,0 +1,72 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}Shopping Cart - Online Shop{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="mb-4">Your Shopping Cart</h1>
+
+    {% if cart_items %}
+        <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in cart_items %}
+                        <tr>
+                            <td>
+                                {% if item.product.image %}
+                                    <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" style="width: 50px; height: 50px; object-fit: cover;" class="me-2">
+                                {% endif %}
+                                {{ item.product.name }}
+                            </td>
+                            <td>{{ item.product.price }} ლ</td>
+                            <!-- <td>
+                                <input type="number" name="quantity_{{ item.id }}" value="{{ item.quantity }}" min="1" max="{{ item.product.stock }}" class="form-control" style="width: 80px;">
+                            </td>  -->
+                            <td>
+                                <form action="{% url 'orders:update_cart_item' item.pk %}" method="post" style="display: flex; align-items: center; gap: 5px;">
+                                    {% csrf_token %}
+                                    <input type="number" name="quantity" value="{{ item.quantity }}" min="1" max="{{ item.product.stock }}" class="form-control" style="width: 80px;">
+                                    <button type="submit" class="btn btn-secondary btn-sm">Update</button>
+                                </form>
+                            </td>
+                            <td> {{item.amount|floatformat:2}} ლ</td>
+                            <td>
+                                <form action="{% url 'orders:delete_cart_item' item.id %}" method="post" style="display: inline;">
+                                    {% csrf_token %}
+                                     <input type="hidden" name="remove_item_id" value="{{ item.id }}">
+                                     <button type="submit" name="remove_{{ item.id }}" class="btn btn-danger btn-sm">Remove</button>
+                                </form>
+        
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mt-4">
+                <div>
+                </div>
+                <div class="flex" style="display: grid; align-items: center; gap: 10px;">
+                    <strong>Total: {{ total_amount|floatformat:2 }} ლ</strong>
+                    <a href="#" class="btn btn-primary">Proceed to Checkout</a>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="alert alert-info">
+            <h4>Your cart is empty</h4>
+            <p><a href="{% url 'shop:products' %}">Continue shopping</a></p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
