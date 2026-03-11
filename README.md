@@ -1,0 +1,2 @@
+# OnlineShopDjango
+Online Electronics Store
